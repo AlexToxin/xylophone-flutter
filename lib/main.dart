@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+  final player = AudioCache();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,13 +14,41 @@ class XylophoneApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: <Widget>[
-              xylophoneButton(1, Colors.red),
-              xylophoneButton(2, Colors.orange),
-              xylophoneButton(3, Colors.yellow),
-              xylophoneButton(4, Colors.green),
-              xylophoneButton(5, Colors.blue.shade200),
-              xylophoneButton(6, Colors.blue.shade900),
-              xylophoneButton(7, Colors.purple),
+              xylophoneButton(
+                1,
+                Colors.red,
+                player,
+              ),
+              xylophoneButton(
+                2,
+                Colors.orange,
+                player,
+              ),
+              xylophoneButton(
+                3,
+                Colors.yellow,
+                player,
+              ),
+              xylophoneButton(
+                4,
+                Colors.green,
+                player,
+              ),
+              xylophoneButton(
+                5,
+                Colors.blue.shade200,
+                player,
+              ),
+              xylophoneButton(
+                6,
+                Colors.blue.shade900,
+                player,
+              ),
+              xylophoneButton(
+                7,
+                Colors.purple,
+                player,
+              ),
             ],
           ),
         ),
@@ -27,13 +57,12 @@ class XylophoneApp extends StatelessWidget {
   }
 }
 
-Widget xylophoneButton(int number, Color color) {
+Widget xylophoneButton(int number, Color color, AudioCache player) {
   return FlatButton(
       color: color,
       padding: EdgeInsets.all(0),
       child: null,
       onPressed: () {
-        final player = AudioCache();
         player.play('note$number.wav');
       });
 }
